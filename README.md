@@ -71,12 +71,3 @@ pageModule.pages(
   },
 );
 ```
-
-## Important Note ⚡
-
-After adding this module, **don’t forget to run build\_runner** to generate the Module DTO files:
-
-```bash
-flutter pub run build_runner build --delete-conflicting-outputs
-```
-
