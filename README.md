@@ -13,7 +13,7 @@ Add the package to your project by updating `pubspec.yaml`:
 dependencies:
   pages_module:
     git:
-      url: https://github.com/scilton/pages_module.git
+      url: https://github.com/aquadic/pages_module.git
 
 ````
 
