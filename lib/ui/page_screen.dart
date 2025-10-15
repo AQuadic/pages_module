@@ -45,12 +45,7 @@ class PageScreen extends StatelessWidget {
                 ),
                 child: ListView(
                   padding: const EdgeInsets.all(24),
-                  children: [
-                    Directionality(
-                      textDirection: TextDirection.ltr,
-                      child: HtmlWidget(description),
-                    ),
-                  ],
+                  children: [HtmlWidget(description)],
                 ),
               ),
             ),
