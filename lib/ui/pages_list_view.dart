@@ -8,13 +8,13 @@ import '../dto/page_dto.dart';
 class PagesListView extends StatefulWidget {
   final dynamic dioInstance;
   final Widget Function(BuildContext, List<PageDto>) builder;
-  final bool getPages;
+  final ControllerCubit? pagesController;
 
   const PagesListView({
     super.key,
     this.dioInstance,
     required this.builder,
-    this.getPages = true,
+    this.pagesController,
   });
 
   @override
@@ -27,13 +27,13 @@ class _PagesListViewState extends State<PagesListView> {
   @override
   void initState() {
     super.initState();
-    controller = ControllerCubit(widget.dioInstance);
+    controller = widget.pagesController ?? ControllerCubit(widget.dioInstance);
     _getPages();
   }
 
   _getPages() async {
     try {
-      if (widget.getPages) await controller.fetchPages();
+      if (widget.pagesController != null) await controller.fetchPages();
     } catch (e, s) {
       print(e);
       print(s);
