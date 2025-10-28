@@ -2,27 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pages_module/controller/controller_cubit.dart';
-import 'package:pages_module/ui/page_screen.dart';
 
 import '../dto/page_dto.dart';
 
 class PagesListView extends StatefulWidget {
-  const PagesListView({super.key, this.dioInstance, required this.builder});
-
   final dynamic dioInstance;
   final Widget Function(BuildContext, List<PageDto>) builder;
+  final bool getPages;
 
-  static onPageTap(BuildContext context, PageDto page) {
-    Navigator.push(
-      context,
-      CupertinoPageRoute(
-        builder: (context) => PageScreen(
-          title: page.title?.get(context) ?? '',
-          description: page.description?.get(context) ?? '',
-        ),
-      ),
-    );
-  }
+  const PagesListView({
+    super.key,
+    this.dioInstance,
+    required this.builder,
+    this.getPages = true,
+  });
 
   @override
   State<PagesListView> createState() => _PagesListViewState();
@@ -38,8 +31,13 @@ class _PagesListViewState extends State<PagesListView> {
     _getPages();
   }
 
-  _getPages() {
-    controller.fetchPages();
+  _getPages() async {
+    try {
+      if (widget.getPages) await controller.fetchPages();
+    } catch (e, s) {
+      print(e);
+      print(s);
+    }
   }
 
   @override

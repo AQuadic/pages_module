@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:pages_module/dto/page_dto.dart';
+import 'package:pages_module/ui/page_screen.dart';
 
 part 'controller_state.dart';
 
@@ -30,5 +31,17 @@ class ControllerCubit extends Cubit<ControllerState> {
     } catch (e) {
       emit(PagesError(e.toString()));
     }
+  }
+
+  onPageTap(BuildContext context, PageDto page) {
+    Navigator.push(
+      context,
+      CupertinoPageRoute(
+        builder: (context) => PageScreen(
+          title: page.title?.get(context) ?? '',
+          description: page.description?.get(context) ?? '',
+        ),
+      ),
+    );
   }
 }
