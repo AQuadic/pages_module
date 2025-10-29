@@ -10,7 +10,7 @@ class PagesModule {
 
   static final instance = PagesModule._();
 
-  late final ControllerCubit pagesController;
+  late ControllerCubit pagesController;
 
   initController(dynamic dioInstance) {
     pagesController = ControllerCubit(dioInstance);
