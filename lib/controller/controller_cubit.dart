@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pages_module/dto/page_dto.dart';
+import 'package:pages_module/models/page_model.dart';
 import 'package:pages_module/ui/page_screen.dart';
 
 part 'controller_state.dart';
@@ -10,8 +10,10 @@ class ControllerCubit extends Cubit<ControllerState> {
   ControllerCubit(this._dioInstance) : super(ControllerInitial());
 
   static ControllerCubit get(context) => BlocProvider.of(context);
+
   final dynamic _dioInstance;
-  List<PageDto>? pages;
+
+  List<PageModel>? pages;
 
   Future<void> fetchPages() async {
     emit(PagesLoading());
@@ -19,7 +21,7 @@ class ControllerCubit extends Cubit<ControllerState> {
       final value = await _dioInstance.getData('pages');
       if (value is Response) {
         final pages = value.data as List;
-        this.pages = pages.map((page) => PageDto.fromJson(page)).toList();
+        this.pages = pages.map((page) => PageModel.fromJson(page)).toList();
         emit(
           PagesLoaded(
             msg: 'Pages loaded successfully with ${pages.length} items',
@@ -33,7 +35,7 @@ class ControllerCubit extends Cubit<ControllerState> {
     }
   }
 
-  onPageTap(BuildContext context, PageDto page) {
+  onPageTap(BuildContext context, PageModel page) {
     Navigator.push(
       context,
       CupertinoPageRoute(

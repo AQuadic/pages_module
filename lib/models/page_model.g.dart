@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'page_dto.dart';
+part of 'page_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PageDto _$PageDtoFromJson(Map<String, dynamic> json) => PageDto()
+PageModel _$PageModelFromJson(Map<String, dynamic> json) => PageModel()
   ..id = (json['id'] as num?)?.toInt()
   ..title = json['title'] == null ? null : LangModel.fromJson(json['title'])
   ..description = json['description'] == null
@@ -18,7 +18,7 @@ PageDto _$PageDtoFromJson(Map<String, dynamic> json) => PageDto()
     const ResponsiveImageModelJsonConv().fromJson,
   );
 
-Map<String, dynamic> _$PageDtoToJson(PageDto instance) => <String, dynamic>{
+Map<String, dynamic> _$PageModelToJson(PageModel instance) => <String, dynamic>{
   'id': instance.id,
   'title': instance.title?.toJson(),
   'description': instance.description?.toJson(),

@@ -1,6 +1,6 @@
 name: pages_module
 description: "A new Flutter package project."
-version: 0.0.2
+version: 0.0.3
 homepage:
 
 environment:
@@ -13,7 +13,7 @@ dependencies:
   json_annotation: ^4.9.0
   dio: ^5.9.0
   flutter_bloc: ^9.1.1
-  flutter_widget_from_html: ^0.17.0
+  flutter_widget_from_html: ^0.17.1
   aq_tools:
     git:
       url: https://github.com/AQuadic/aq_flutter_tools.git
@@ -23,9 +23,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
-  build_runner: ^2.7.0
-  json_serializable: ^6.10.0
+  flutter_lints: ^6.0.0
+  build_runner: ^2.10.1
+  json_serializable: ^6.11.1
 
 
 
